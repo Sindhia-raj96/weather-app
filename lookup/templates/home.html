@@ -2,6 +2,38 @@
 
 {% block content %}
 
-<h1>hello world</h1>
+
+<!--retrieving api page . list-->
+
+{% if zipcode %}
+
+    {{ zipcode }}
+    
+{% endif %}
+
+
+
+{% if api %}
+    {%if api == "Error....."%}
+        There was an error, please try again....
+    {% else %}
+    <div class="card" style="width: 100%; margin-top: 100px;">
+        
+        <div class="card-body {{ category_color }}">
+          <h1 class="card-title fw-normal">{{api.0.Category.Name}}</h1><br/>
+          <p class="   fw-normal mx-auto p-2 card-text   fs-5 text-secondary" >Current {{api.0.ReportingArea}} Air Quality: {{api.0.AQI}}</p> <!--retrieving page . list . dictionary-->
+         
+            <p class="   fw-normal mx-auto p-2 card-text   fs-5 text-secondary">{{ category_description }}</p>
+
+        </div>
+    </div>
+    <br/> 
+      
+    {% endif %}
+
+   
+
+
+{% endif %}
 
 {% endblock %}
